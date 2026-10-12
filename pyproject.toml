@@ -52,7 +52,7 @@ career = [
     "ortools>=9.10,<9.11",
     "playwright>=1.48,<2",
     "pypdf>=5,<6",
-    "python-docx>=1.1,<2",
+    "python-docx>=1.2.0,<2",
 ]
 infra = [
     "redis>=5,<6",
