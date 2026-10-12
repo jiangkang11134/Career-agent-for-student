@@ -1,0 +1,53 @@
+services:
+  qdrant:
+    image: ${SMART_AGENT_QDRANT_IMAGE:-qdrant/qdrant:v1.14.1}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6333:6333"
+      - "127.0.0.1:6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:6333/healthz || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:8-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--appendfsync", "everysec"]
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mysql:
+    image: ${SMART_AGENT_MYSQL_IMAGE:-mysql:8.4}
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: smart_agent
+      MYSQL_USER: smart_agent
+      # Override both values in .env for any shared or production deployment.
+      MYSQL_PASSWORD: ${SMART_AGENT_MYSQL_PASSWORD:-smart-agent-dev}
+      MYSQL_ROOT_PASSWORD: ${SMART_AGENT_MYSQL_ROOT_PASSWORD:-smart-agent-dev-root}
+    ports:
+      - "127.0.0.1:${SMART_AGENT_MYSQL_HOST_PORT:-13306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      # CMD-SHELL is required so the container expands MYSQL_ROOT_PASSWORD.
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p\"$${MYSQL_ROOT_PASSWORD}\" || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  qdrant_data:
+  redis_data:
+  mysql_data:

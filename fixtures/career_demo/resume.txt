@@ -1,0 +1,2 @@
+General resume reference for Demo Candidate.
+Backend engineering, Python, FastAPI, Redis, and distributed systems.

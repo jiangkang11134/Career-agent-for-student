@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+frontend/app/node_modules/
+!frontend/dist/
+!frontend/dist/**
+.venv/
+venv/
+.python-version.local
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Smart Agent runtime data
+.runtime/import-map/
+.runtime/memory/
+.runtime/memory-local/
+.runtime/tool-results/
+.runtime/
+benchmark/results*/
+benchmark/e2e_output.log
+benchmark/e2e_*.log
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local settings (API keys)
+/.env
+/.env.*
+!/.env.example

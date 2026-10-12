@@ -1,0 +1,5 @@
+Company: Demo Cloud
+Role: Backend Engineer
+Build reliable Python API services.
+Use Redis caching and profiling to improve service performance.
+Understand distributed systems and write maintainable tests.

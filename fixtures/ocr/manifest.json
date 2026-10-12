@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "description": "OCR acceptance cases for JD and career material extraction.",
+  "cases": [
+    {
+      "case_id": "table-layout",
+      "layout": "table",
+      "language": "zh-en",
+      "rotation_degrees": 0,
+      "quality": "clear",
+      "expected_text": "技能 Python Redis\n经验 3 years"
+    },
+    {
+      "case_id": "two-column-resume",
+      "layout": "two-column",
+      "language": "zh-en",
+      "rotation_degrees": 0,
+      "quality": "clear",
+      "expected_text": "Education\n教育经历\nProjects\n项目经历"
+    },
+    {
+      "case_id": "low-resolution",
+      "layout": "single-column",
+      "language": "zh",
+      "rotation_degrees": 0,
+      "quality": "low",
+      "expected_text": "后端开发工程师 Python"
+    },
+    {
+      "case_id": "mixed-language",
+      "layout": "single-column",
+      "language": "zh-en",
+      "rotation_degrees": 0,
+      "quality": "clear",
+      "expected_text": "负责 API latency 优化和缓存设计"
+    },
+    {
+      "case_id": "rotated-image",
+      "layout": "single-column",
+      "language": "en",
+      "rotation_degrees": 90,
+      "quality": "clear",
+      "expected_text": "Backend Engineer\nPython services"
+    }
+  ]
+}
