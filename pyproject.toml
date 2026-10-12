@@ -43,7 +43,7 @@ evaluation = [
 ]
 web = [
     "fastapi>=0.109.0",
-    "python-multipart>=0.0.9",
+    "python-multipart>=0.0.32",
     "uvicorn>=0.27.0",
 ]
 career = [
@@ -62,7 +62,7 @@ infra = [
 ]
 production = [
     "fastapi>=0.109.0",
-    "python-multipart>=0.0.9",
+    "python-multipart>=0.0.32",
     "uvicorn>=0.27.0",
     "redis>=5,<6",
     "sqlalchemy>=2,<3",
